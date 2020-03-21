@@ -1,6 +1,6 @@
 ## Go 语言 Demo
 
-一个用 Go 语言和 [Gin](https://github.com/gin-gonic/gin) 框架实现的简单 TodoList ，包含了对 MySql 数据库的操作。
+一个用 Go 语言和 [Gin](https://github.com/gin-gonic/gin) 框架实现的简单 TodoList ，包含了对 MySql CRUD 操作。
 
 ![](/screenshot/index.png)
 
@@ -80,34 +80,17 @@ $ go run main.go
 [GIN] 2020/03/21 - 23:54:47 | 200 |    8.232487ms |       127.0.0.1 | DELETE   "/v1/todo/9"
 [GIN] 2020/03/21 - 23:54:48 | 200 |     483.045µs |       127.0.0.1 | GET      "/"
 [GIN] 2020/03/21 - 23:54:49 | 200 |    1.649549ms |       127.0.0.1 | GET      "/v1/todo"
-[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
 
-[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
- - using env:	export GIN_MODE=release
- - using code:	gin.SetMode(gin.ReleaseMode)
-
-[GIN-debug] Loaded HTML Templates (3): 
-	- 
-	- favicon.ico
-	- index.html
-
-[GIN-debug] GET    /static/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
-[GIN-debug] HEAD   /static/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
-[GIN-debug] GET    /                         --> go_todo/controller.IndexHandler (3 handlers)
-[GIN-debug] POST   /v1/todo                  --> go_todo/controller.CreateTodoHandler (3 handlers)
-[GIN-debug] GET    /v1/todo                  --> go_todo/controller.GetTodoListController (3 handlers)
-[GIN-debug] PUT    /v1/todo/:id              --> go_todo/controller.UpdateTodoController (3 handlers)
-[GIN-debug] DELETE /v1/todo/:id              --> go_todo/controller.DeleteTodoController (3 handlers)
-[GIN-debug] Environment variable PORT is undefined. Using port :8080 by default
-[GIN-debug] Listening and serving HTTP on localhost:8080
-[GIN] 2020/03/21 - 23:55:12 | 200 |       429.9µs |       127.0.0.1 | GET      "/"
-[GIN] 2020/03/21 - 23:55:12 | 200 |    1.434125ms |       127.0.0.1 | GET      "/v1/todo"
-[GIN] 2020/03/21 - 23:55:17 | 200 |    9.450225ms |       127.0.0.1 | POST     "/v1/todo"
-[GIN] 2020/03/21 - 23:55:17 | 200 |    1.067368ms |       127.0.0.1 | GET      "/v1/todo"
-[GIN] 2020/03/21 - 23:55:20 | 200 |   10.002092ms |       127.0.0.1 | POST     "/v1/todo"
-[GIN] 2020/03/21 - 23:55:20 | 200 |    1.292865ms |       127.0.0.1 | GET      "/v1/todo"
-[GIN] 2020/03/21 - 23:55:31 | 200 |    4.469636ms |       127.0.0.1 | POST     "/v1/todo"
-[GIN] 2020/03/21 - 23:55:31 | 200 |    1.481128ms |       127.0.0.1 | GET      "/v1/todo"
-[GIN] 2020/03/21 - 23:55:33 | 200 |    7.823372ms |       127.0.0.1 | PUT      "/v1/todo/12"
-
+```
+##### MySql 中的数据
+```shell script
+mysql> select * from todos;
++----+-----------------------+--------+
+| id | title                 | status |
++----+-----------------------+--------+
+| 10 | 吃饭                  |      0 |
+| 11 | 睡觉                  |      0 |
+| 12 | 写一个Go语言Demo       |      1 |
++----+-----------------------+--------+
+3 rows in set (0.00 sec)
 ```
